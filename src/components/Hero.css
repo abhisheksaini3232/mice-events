@@ -1,0 +1,690 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a0a1e;
+}
+
+/* ===== ANIMATED BACKGROUND (GIF-like exhibition effect) ===== */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Floating particles - mimicking stage/exhibition lights */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.6), transparent);
+  animation: float-particle linear infinite;
+  pointer-events: none;
+}
+
+.particle-1 {
+  width: 4px;
+  height: 4px;
+  top: 10%;
+  left: 15%;
+  animation-duration: 8s;
+  animation-delay: 0s;
+}
+.particle-2 {
+  width: 6px;
+  height: 6px;
+  top: 20%;
+  left: 80%;
+  animation-duration: 12s;
+  animation-delay: 1s;
+}
+.particle-3 {
+  width: 3px;
+  height: 3px;
+  top: 60%;
+  left: 30%;
+  animation-duration: 10s;
+  animation-delay: 2s;
+}
+.particle-4 {
+  width: 5px;
+  height: 5px;
+  top: 80%;
+  left: 70%;
+  animation-duration: 9s;
+  animation-delay: 0.5s;
+}
+.particle-5 {
+  width: 4px;
+  height: 4px;
+  top: 40%;
+  left: 50%;
+  animation-duration: 11s;
+  animation-delay: 3s;
+}
+.particle-6 {
+  width: 7px;
+  height: 7px;
+  top: 15%;
+  left: 45%;
+  animation-duration: 14s;
+  animation-delay: 1.5s;
+}
+.particle-7 {
+  width: 3px;
+  height: 3px;
+  top: 70%;
+  left: 85%;
+  animation-duration: 7s;
+  animation-delay: 4s;
+}
+.particle-8 {
+  width: 5px;
+  height: 5px;
+  top: 50%;
+  left: 10%;
+  animation-duration: 13s;
+  animation-delay: 2.5s;
+}
+.particle-9 {
+  width: 4px;
+  height: 4px;
+  top: 30%;
+  left: 65%;
+  animation-duration: 10s;
+  animation-delay: 0.8s;
+}
+.particle-10 {
+  width: 6px;
+  height: 6px;
+  top: 85%;
+  left: 40%;
+  animation-duration: 15s;
+  animation-delay: 3.5s;
+}
+.particle-11 {
+  width: 3px;
+  height: 3px;
+  top: 5%;
+  left: 55%;
+  animation-duration: 9s;
+  animation-delay: 1.2s;
+}
+.particle-12 {
+  width: 8px;
+  height: 8px;
+  top: 45%;
+  left: 25%;
+  animation-duration: 16s;
+  animation-delay: 0.3s;
+}
+.particle-13 {
+  width: 4px;
+  height: 4px;
+  top: 75%;
+  left: 60%;
+  animation-duration: 11s;
+  animation-delay: 2.8s;
+}
+.particle-14 {
+  width: 5px;
+  height: 5px;
+  top: 25%;
+  left: 90%;
+  animation-duration: 8s;
+  animation-delay: 4.2s;
+}
+.particle-15 {
+  width: 6px;
+  height: 6px;
+  top: 55%;
+  left: 5%;
+  animation-duration: 12s;
+  animation-delay: 1.8s;
+}
+.particle-16 {
+  width: 3px;
+  height: 3px;
+  top: 90%;
+  left: 20%;
+  animation-duration: 10s;
+  animation-delay: 3.2s;
+}
+.particle-17 {
+  width: 4px;
+  height: 4px;
+  top: 35%;
+  left: 75%;
+  animation-duration: 14s;
+  animation-delay: 0.6s;
+}
+.particle-18 {
+  width: 7px;
+  height: 7px;
+  top: 65%;
+  left: 45%;
+  animation-duration: 9s;
+  animation-delay: 2.2s;
+}
+.particle-19 {
+  width: 5px;
+  height: 5px;
+  top: 8%;
+  left: 35%;
+  animation-duration: 11s;
+  animation-delay: 4.5s;
+}
+.particle-20 {
+  width: 4px;
+  height: 4px;
+  top: 48%;
+  left: 92%;
+  animation-duration: 13s;
+  animation-delay: 1.1s;
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-120px) translateX(40px) scale(1.5);
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-250px) translateX(-30px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Grid lines - Exhibition floor grid effect */
+.hero-grid-lines {
+  position: absolute;
+  inset: 0;
+  perspective: 800px;
+}
+
+.grid-line {
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.08),
+    transparent
+  );
+  animation: sweep-line linear infinite;
+}
+
+.grid-line-1 {
+  width: 100%;
+  height: 1px;
+  top: 20%;
+  animation-duration: 6s;
+  animation-delay: 0s;
+}
+.grid-line-2 {
+  width: 100%;
+  height: 1px;
+  top: 40%;
+  animation-duration: 8s;
+  animation-delay: 2s;
+}
+.grid-line-3 {
+  width: 100%;
+  height: 1px;
+  top: 60%;
+  animation-duration: 7s;
+  animation-delay: 1s;
+}
+.grid-line-4 {
+  width: 100%;
+  height: 1px;
+  top: 80%;
+  animation-duration: 9s;
+  animation-delay: 3s;
+}
+.grid-line-5 {
+  width: 1px;
+  height: 100%;
+  left: 20%;
+  animation-duration: 10s;
+  animation-delay: 0.5s;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(212, 175, 55, 0.06),
+    transparent
+  );
+}
+.grid-line-6 {
+  width: 1px;
+  height: 100%;
+  left: 40%;
+  animation-duration: 12s;
+  animation-delay: 1.5s;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(212, 175, 55, 0.06),
+    transparent
+  );
+}
+.grid-line-7 {
+  width: 1px;
+  height: 100%;
+  left: 60%;
+  animation-duration: 11s;
+  animation-delay: 2.5s;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(212, 175, 55, 0.06),
+    transparent
+  );
+}
+.grid-line-8 {
+  width: 1px;
+  height: 100%;
+  left: 80%;
+  animation-duration: 13s;
+  animation-delay: 3.5s;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(212, 175, 55, 0.06),
+    transparent
+  );
+}
+
+@keyframes sweep-line {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Spotlights - Exhibition hall lighting */
+.hero-spotlight {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.08) 0%,
+    transparent 70%
+  );
+  top: -150px;
+  right: -100px;
+  animation: pulse-spotlight 5s ease-in-out infinite;
+}
+
+.hero-spotlight-2 {
+  top: auto;
+  right: auto;
+  bottom: -200px;
+  left: -150px;
+  background: radial-gradient(
+    circle,
+    rgba(100, 140, 200, 0.06) 0%,
+    transparent 70%
+  );
+  animation-delay: 2.5s;
+  animation-duration: 7s;
+}
+
+@keyframes pulse-spotlight {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+/* Stage lights beams */
+.hero-stage-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+}
+
+.stage-light {
+  position: absolute;
+  top: -50px;
+  width: 2px;
+  height: 120%;
+  background: linear-gradient(
+    180deg,
+    rgba(212, 175, 55, 0.15),
+    transparent 80%
+  );
+  transform-origin: top center;
+  animation: sway-light ease-in-out infinite;
+}
+
+.stage-light-1 {
+  left: 20%;
+  animation-duration: 6s;
+  transform: rotate(-15deg);
+}
+
+.stage-light-2 {
+  left: 50%;
+  animation-duration: 8s;
+  animation-delay: 1s;
+  transform: rotate(5deg);
+}
+
+.stage-light-3 {
+  left: 80%;
+  animation-duration: 7s;
+  animation-delay: 2s;
+  transform: rotate(15deg);
+}
+
+@keyframes sway-light {
+  0%,
+  100% {
+    transform: rotate(-15deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: rotate(15deg);
+    opacity: 0.8;
+  }
+}
+
+/* Overlay gradient */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 30, 0.85) 0%,
+    rgba(10, 10, 30, 0.7) 40%,
+    rgba(10, 10, 30, 0.85) 100%
+  );
+  z-index: 1;
+}
+
+/* ===== HERO CONTENT ===== */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 2rem;
+  max-width: 900px;
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #d4af37;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d4af37;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+}
+
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title .highlight {
+  background: linear-gradient(135deg, #d4af37, #f0d060, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, #d4af37, #f0d060);
+  color: #0a0a1e;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+}
+
+.btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.btn-primary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.9rem 2rem;
+  background: transparent;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+  transform: translateY(-3px);
+}
+
+/* Stats */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #d4af37;
+}
+
+.stat-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 0.25rem;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Scroll indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-scroll-indicator span {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, #d4af37, transparent);
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(0.5);
+    opacity: 0.3;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero-stats {
+    gap: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .hero-scroll-indicator {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat-divider {
+    width: 50px;
+    height: 1px;
+  }
+}
