@@ -5,7 +5,7 @@ import "./Hero.css";
 const Hero = () => {
   return (
     <section className="hero">
-      {/* Animated background with CSS-only exhibition-themed effects */}
+      {/* Animated background effects */}
       <div className="hero-bg">
         <div className="hero-particles">
           {[...Array(20)].map((_, i) => (
@@ -23,6 +23,35 @@ const Hero = () => {
           <div className="stage-light stage-light-1"></div>
           <div className="stage-light stage-light-2"></div>
           <div className="stage-light stage-light-3"></div>
+        </div>
+        {/* Stage Spotlight Fixtures - inspired by classic show spotlights */}
+        <div className="show-spotlight show-spotlight-left">
+          <div className="spot-fixture">
+            <div className="spot-mount"></div>
+            <div className="spot-arm"></div>
+            <div className="spot-head"></div>
+            <div className="spot-lens-glow"></div>
+          </div>
+          <div className="spot-cone"></div>
+          <div className="spot-cone-inner"></div>
+          <div className="spot-cone-edge spot-cone-edge-l"></div>
+          <div className="spot-cone-edge spot-cone-edge-r"></div>
+          <div className="spot-source-flare"></div>
+          <div className="spot-floor-pool"></div>
+        </div>
+        <div className="show-spotlight show-spotlight-right">
+          <div className="spot-fixture">
+            <div className="spot-mount"></div>
+            <div className="spot-arm"></div>
+            <div className="spot-head"></div>
+            <div className="spot-lens-glow"></div>
+          </div>
+          <div className="spot-cone"></div>
+          <div className="spot-cone-inner"></div>
+          <div className="spot-cone-edge spot-cone-edge-l"></div>
+          <div className="spot-cone-edge spot-cone-edge-r"></div>
+          <div className="spot-source-flare"></div>
+          <div className="spot-floor-pool"></div>
         </div>
       </div>
       <div className="hero-overlay"></div>

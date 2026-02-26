@@ -20,11 +20,7 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <Link to="/" className="logo" onClick={closeMenu}>
-          <span className="logo-icon">◆</span>
-          <div className="logo-text">
-            <span className="logo-main">MICE</span>
-            <span className="logo-sub">Event Solutions</span>
-          </div>
+          <span className="logo-main">MICE</span>
         </Link>
 
         <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>

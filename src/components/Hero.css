@@ -8,11 +8,22 @@
   background: #0a0a1e;
 }
 
-/* ===== ANIMATED BACKGROUND (GIF-like exhibition effect) ===== */
-.hero-bg {
+/* ===== BACKGROUND GIF ===== */
+.hero-gif-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.55) saturate(0.85);
+}
+
+/* ===== ANIMATED OVERLAY EFFECTS ===== */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 /* Floating particles - mimicking stage/exhibition lights */
@@ -418,23 +429,731 @@
   }
 }
 
+/* ===== SHOW SPOTLIGHT FIXTURES (Dreamstime-inspired) ===== */
+.show-spotlight {
+  position: absolute;
+  top: 80px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.show-spotlight-left {
+  left: 40px;
+}
+
+.show-spotlight-right {
+  right: 40px;
+}
+
+/* --- Physical Fixture (visible light housing) --- */
+.spot-fixture {
+  position: absolute;
+  top: 0;
+  z-index: 6;
+}
+
+.show-spotlight-left .spot-fixture {
+  left: 0;
+}
+
+.show-spotlight-right .spot-fixture {
+  right: 0;
+}
+
+/* Ceiling mount bracket — bolted to header bottom edge */
+.spot-mount {
+  position: absolute;
+  top: -4px;
+  width: 44px;
+  height: 12px;
+  background: linear-gradient(180deg, #555568 0%, #3a3a4e 50%, #2a2a3a 100%);
+  border-radius: 0 0 4px 4px;
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.show-spotlight-left .spot-mount {
+  left: 0;
+}
+
+.show-spotlight-right .spot-mount {
+  right: 0;
+}
+
+/* Pivot arm */
+.spot-arm {
+  position: absolute;
+  top: 6px;
+  width: 5px;
+  height: 26px;
+  background: linear-gradient(180deg, #606075, #45455a, #3a3a4a);
+  border-radius: 2px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.show-spotlight-left .spot-arm {
+  left: 20px;
+  transform: rotate(22deg);
+  transform-origin: top center;
+}
+
+.show-spotlight-right .spot-arm {
+  right: 20px;
+  transform: rotate(-22deg);
+  transform-origin: top center;
+}
+
+/* Spotlight head / housing (barrel shape) */
+.spot-head {
+  position: absolute;
+  top: 28px;
+  width: 40px;
+  height: 32px;
+  border-radius: 6px 6px 20px 20px;
+  overflow: visible;
+}
+
+.show-spotlight-left .spot-head {
+  left: 2px;
+  transform: rotate(28deg);
+  background: linear-gradient(180deg, #454560 0%, #32324a 40%, #222238 100%);
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.6),
+    inset 0 2px 4px rgba(255, 255, 255, 0.06),
+    0 8px 30px rgba(255, 235, 180, 0.25);
+}
+
+.show-spotlight-right .spot-head {
+  right: 2px;
+  transform: rotate(-28deg);
+  background: linear-gradient(180deg, #454560 0%, #32324a 40%, #222238 100%);
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.6),
+    inset 0 2px 4px rgba(255, 255, 255, 0.06),
+    0 8px 30px rgba(180, 210, 255, 0.25);
+}
+
+/* Glowing lens at bottom of head */
+.spot-lens-glow {
+  position: absolute;
+  top: 52px;
+  width: 26px;
+  height: 16px;
+  border-radius: 0 0 13px 13px;
+}
+
+.show-spotlight-left .spot-lens-glow {
+  left: 9px;
+  transform: rotate(28deg);
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 245, 210, 1) 20%,
+    rgba(255, 230, 160, 0.8) 50%,
+    rgba(255, 220, 130, 0.3) 75%,
+    transparent 100%
+  );
+  box-shadow:
+    0 6px 25px rgba(255, 240, 190, 1),
+    0 12px 50px rgba(255, 220, 130, 0.6),
+    0 0 60px rgba(255, 250, 230, 0.4);
+  animation: lens-pulse-warm 2.5s ease-in-out infinite;
+}
+
+.show-spotlight-right .spot-lens-glow {
+  right: 9px;
+  transform: rotate(-28deg);
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(220, 240, 255, 1) 20%,
+    rgba(170, 210, 255, 0.8) 50%,
+    rgba(140, 190, 255, 0.3) 75%,
+    transparent 100%
+  );
+  box-shadow:
+    0 6px 25px rgba(200, 225, 255, 1),
+    0 12px 50px rgba(160, 200, 255, 0.6),
+    0 0 60px rgba(220, 240, 255, 0.4);
+  animation: lens-pulse-cool 2.8s ease-in-out infinite 0.3s;
+}
+
+@keyframes lens-pulse-warm {
+  0%,
+  100% {
+    opacity: 0.85;
+    box-shadow:
+      0 6px 25px rgba(255, 240, 190, 0.8),
+      0 12px 50px rgba(255, 220, 130, 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow:
+      0 8px 35px rgba(255, 240, 190, 1),
+      0 16px 70px rgba(255, 220, 130, 0.8),
+      0 0 80px rgba(255, 250, 240, 0.5);
+  }
+}
+
+@keyframes lens-pulse-cool {
+  0%,
+  100% {
+    opacity: 0.85;
+    box-shadow:
+      0 6px 25px rgba(200, 225, 255, 0.8),
+      0 12px 50px rgba(160, 200, 255, 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow:
+      0 8px 35px rgba(200, 225, 255, 1),
+      0 16px 70px rgba(160, 200, 255, 0.8),
+      0 0 80px rgba(230, 245, 255, 0.5);
+  }
+}
+
+/* --- Main Cone Beam (BRIGHT, wide) --- */
+.spot-cone {
+  position: absolute;
+  top: 55px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  filter: blur(10px);
+  mix-blend-mode: screen;
+}
+
+.show-spotlight-left .spot-cone {
+  left: -5px;
+  border-width: 0 250px 800px 40px;
+  border-color: transparent transparent rgba(255, 245, 220, 0.2) transparent;
+  transform-origin: 15% 0%;
+  animation: cone-sway-left 6s ease-in-out infinite;
+}
+
+.show-spotlight-right .spot-cone {
+  right: -5px;
+  border-width: 0 40px 800px 250px;
+  border-color: transparent transparent rgba(210, 230, 255, 0.2) transparent;
+  transform-origin: 85% 0%;
+  animation: cone-sway-right 7s ease-in-out infinite;
+}
+
+/* --- Inner Bright Core of Cone --- */
+.spot-cone-inner {
+  position: absolute;
+  top: 55px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  filter: blur(6px);
+  mix-blend-mode: screen;
+}
+
+.show-spotlight-left .spot-cone-inner {
+  left: 5px;
+  border-width: 0 170px 700px 25px;
+  border-color: transparent transparent rgba(255, 252, 245, 0.26) transparent;
+  transform-origin: 15% 0%;
+  animation: cone-sway-left 6s ease-in-out infinite;
+}
+
+.show-spotlight-right .spot-cone-inner {
+  right: 5px;
+  border-width: 0 25px 700px 170px;
+  border-color: transparent transparent rgba(230, 242, 255, 0.26) transparent;
+  transform-origin: 85% 0%;
+  animation: cone-sway-right 7s ease-in-out infinite;
+}
+
+/* --- Cone Edges (sharp beam borders) --- */
+.spot-cone-edge {
+  position: absolute;
+  top: 55px;
+  width: 2px;
+  height: 750px;
+  mix-blend-mode: screen;
+}
+
+.show-spotlight-left .spot-cone-edge-l {
+  left: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 245, 220, 0.6) 0%,
+    rgba(255, 245, 220, 0.2) 25%,
+    rgba(255, 245, 220, 0.06) 50%,
+    transparent 75%
+  );
+  transform-origin: top center;
+  animation: edge-sway-left-l 6s ease-in-out infinite;
+}
+
+.show-spotlight-left .spot-cone-edge-r {
+  left: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 245, 220, 0.55) 0%,
+    rgba(255, 245, 220, 0.18) 25%,
+    rgba(255, 245, 220, 0.05) 50%,
+    transparent 75%
+  );
+  transform-origin: top center;
+  animation: edge-sway-left-r 6s ease-in-out infinite;
+}
+
+.show-spotlight-right .spot-cone-edge-l {
+  right: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(210, 230, 255, 0.55) 0%,
+    rgba(210, 230, 255, 0.18) 25%,
+    rgba(210, 230, 255, 0.05) 50%,
+    transparent 75%
+  );
+  transform-origin: top center;
+  animation: edge-sway-right-l 7s ease-in-out infinite;
+}
+
+.show-spotlight-right .spot-cone-edge-r {
+  right: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(210, 230, 255, 0.6) 0%,
+    rgba(210, 230, 255, 0.2) 25%,
+    rgba(210, 230, 255, 0.06) 50%,
+    transparent 75%
+  );
+  transform-origin: top center;
+  animation: edge-sway-right-r 7s ease-in-out infinite;
+}
+
+/* --- Source Flare (very bright point) --- */
+.spot-source-flare {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.show-spotlight-left .spot-source-flare {
+  top: 48px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 250, 230, 0.9) 15%,
+    rgba(255, 240, 200, 0.5) 35%,
+    rgba(255, 220, 130, 0.15) 60%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 50px rgba(255, 240, 190, 0.7),
+    0 0 100px rgba(255, 220, 130, 0.3);
+  animation: source-flare-warm 3s ease-in-out infinite;
+}
+
+.show-spotlight-right .spot-source-flare {
+  top: 48px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(230, 245, 255, 0.9) 15%,
+    rgba(190, 220, 255, 0.5) 35%,
+    rgba(140, 180, 240, 0.15) 60%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 50px rgba(200, 225, 255, 0.7),
+    0 0 100px rgba(160, 200, 255, 0.3);
+  animation: source-flare-cool 3.5s ease-in-out infinite 0.3s;
+}
+
+/* --- Floor Light Pool --- */
+.spot-floor-pool {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(25px);
+  mix-blend-mode: screen;
+}
+
+.show-spotlight-left .spot-floor-pool {
+  bottom: -750px;
+  left: 50px;
+  width: 400px;
+  height: 100px;
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 245, 220, 0.25) 0%,
+    rgba(255, 235, 180, 0.12) 40%,
+    transparent 70%
+  );
+  animation: pool-sway-left 6s ease-in-out infinite;
+}
+
+.show-spotlight-right .spot-floor-pool {
+  bottom: -750px;
+  right: 50px;
+  width: 400px;
+  height: 100px;
+  background: radial-gradient(
+    ellipse,
+    rgba(210, 230, 255, 0.25) 0%,
+    rgba(180, 210, 255, 0.12) 40%,
+    transparent 70%
+  );
+  animation: pool-sway-right 7s ease-in-out infinite;
+}
+
+/* ===== SHOW SPOTLIGHT ANIMATIONS ===== */
+
+/* Left cone — sweeps from -60° to +10° */
+@keyframes cone-sway-left {
+  0% {
+    transform: rotate(-60deg);
+    opacity: 0.8;
+  }
+  12% {
+    transform: rotate(-40deg);
+    opacity: 1;
+  }
+  25% {
+    transform: rotate(-15deg);
+    opacity: 0.85;
+  }
+  37% {
+    transform: rotate(10deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(0deg);
+    opacity: 0.9;
+  }
+  62% {
+    transform: rotate(-20deg);
+    opacity: 1;
+  }
+  75% {
+    transform: rotate(-40deg);
+    opacity: 0.9;
+  }
+  87% {
+    transform: rotate(-55deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(-60deg);
+    opacity: 0.8;
+  }
+}
+
+/* Right cone — sweeps from +60° to -10° */
+@keyframes cone-sway-right {
+  0% {
+    transform: rotate(60deg);
+    opacity: 0.8;
+  }
+  12% {
+    transform: rotate(40deg);
+    opacity: 1;
+  }
+  25% {
+    transform: rotate(15deg);
+    opacity: 0.85;
+  }
+  37% {
+    transform: rotate(-10deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(0deg);
+    opacity: 0.9;
+  }
+  62% {
+    transform: rotate(20deg);
+    opacity: 1;
+  }
+  75% {
+    transform: rotate(40deg);
+    opacity: 0.9;
+  }
+  87% {
+    transform: rotate(55deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(60deg);
+    opacity: 0.8;
+  }
+}
+
+/* Edge line animations — wider range */
+@keyframes edge-sway-left-l {
+  0% {
+    transform: rotate(0deg);
+  }
+  12% {
+    transform: rotate(16deg);
+  }
+  25% {
+    transform: rotate(30deg);
+  }
+  37% {
+    transform: rotate(42deg);
+  }
+  50% {
+    transform: rotate(32deg);
+  }
+  62% {
+    transform: rotate(20deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+  87% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes edge-sway-left-r {
+  0% {
+    transform: rotate(22deg);
+  }
+  12% {
+    transform: rotate(38deg);
+  }
+  25% {
+    transform: rotate(52deg);
+  }
+  37% {
+    transform: rotate(65deg);
+  }
+  50% {
+    transform: rotate(50deg);
+  }
+  62% {
+    transform: rotate(38deg);
+  }
+  75% {
+    transform: rotate(26deg);
+  }
+  87% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(22deg);
+  }
+}
+
+@keyframes edge-sway-right-l {
+  0% {
+    transform: rotate(-22deg);
+  }
+  12% {
+    transform: rotate(-38deg);
+  }
+  25% {
+    transform: rotate(-52deg);
+  }
+  37% {
+    transform: rotate(-65deg);
+  }
+  50% {
+    transform: rotate(-50deg);
+  }
+  62% {
+    transform: rotate(-38deg);
+  }
+  75% {
+    transform: rotate(-26deg);
+  }
+  87% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(-22deg);
+  }
+}
+
+@keyframes edge-sway-right-r {
+  0% {
+    transform: rotate(0deg);
+  }
+  12% {
+    transform: rotate(-16deg);
+  }
+  25% {
+    transform: rotate(-30deg);
+  }
+  37% {
+    transform: rotate(-42deg);
+  }
+  50% {
+    transform: rotate(-32deg);
+  }
+  62% {
+    transform: rotate(-20deg);
+  }
+  75% {
+    transform: rotate(-8deg);
+  }
+  87% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Source flare — intense pulsing */
+@keyframes source-flare-warm {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  20% {
+    transform: scale(1.6);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 0.9;
+  }
+  60% {
+    transform: scale(1.8);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(1.3);
+    opacity: 0.85;
+  }
+}
+
+@keyframes source-flare-cool {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  25% {
+    transform: scale(1.7);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.85;
+  }
+  75% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+/* Floor pool — sweeps towards centre */
+@keyframes pool-sway-left {
+  0% {
+    transform: translateX(30px) scaleX(0.8);
+    opacity: 0.6;
+  }
+  12% {
+    transform: translateX(120px) scaleX(1.1);
+    opacity: 0.9;
+  }
+  25% {
+    transform: translateX(220px) scaleX(1.3);
+    opacity: 0.8;
+  }
+  37% {
+    transform: translateX(300px) scaleX(1.5);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(240px) scaleX(1.2);
+    opacity: 0.85;
+  }
+  62% {
+    transform: translateX(150px) scaleX(1.1);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(70px) scaleX(0.9);
+    opacity: 0.85;
+  }
+  87% {
+    transform: translateX(30px) scaleX(0.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(30px) scaleX(0.8);
+    opacity: 0.6;
+  }
+}
+
+@keyframes pool-sway-right {
+  0% {
+    transform: translateX(-30px) scaleX(0.8);
+    opacity: 0.6;
+  }
+  12% {
+    transform: translateX(-120px) scaleX(1.1);
+    opacity: 0.9;
+  }
+  25% {
+    transform: translateX(-220px) scaleX(1.3);
+    opacity: 0.8;
+  }
+  37% {
+    transform: translateX(-300px) scaleX(1.5);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-240px) scaleX(1.2);
+    opacity: 0.85;
+  }
+  62% {
+    transform: translateX(-150px) scaleX(1.1);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(-70px) scaleX(0.9);
+    opacity: 0.85;
+  }
+  87% {
+    transform: translateX(-30px) scaleX(0.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(-30px) scaleX(0.8);
+    opacity: 0.6;
+  }
+}
+
 /* Overlay gradient */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(10, 10, 30, 0.85) 0%,
-    rgba(10, 10, 30, 0.7) 40%,
-    rgba(10, 10, 30, 0.85) 100%
+    rgba(10, 10, 30, 0.6) 0%,
+    rgba(10, 10, 30, 0.4) 40%,
+    rgba(10, 10, 30, 0.6) 100%
   );
-  z-index: 1;
+  z-index: 2;
 }
 
 /* ===== HERO CONTENT ===== */
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   text-align: center;
   padding: 0 2rem;
   max-width: 900px;
@@ -616,7 +1335,7 @@
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
